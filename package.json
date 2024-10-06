@@ -1,0 +1,24 @@
+{
+  "name": "codef",
+  "version": "1.0.0",
+  "description": "CODEF",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "tsc --watch"
+  },
+  "author": "",
+  "license": "See LICENSE IN LICENSE",
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/web": "^0.0.168",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.2",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "debug": "^4.3.7"
+  }
+}

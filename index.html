@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="dist/bundle.js"></script>
+    <script>
+      var player = new CODEF.music("YM");
+      // player.stereo(true);
+      // player.LoadAndRun("tutorials/media/A Prehistoric Tale  7.ym");
+      var player = new CODEF.music("MOD")
+      player.LoadAndRun("media/trsi_technomania.mod");
+
+      var myfont = new CODEF.image("tutorials/media/font1.png");
+      var mycanvas;
+      var myscrolltext;
+
+      function init() {
+        mycanvas = new CODEF.canvas(640, 480, "main");
+        myfont.initTile(32, 32, 32);
+        myscrolltext = new CODEF.scrolltext_horizontal();
+        myscrolltext.scrtxt =
+          "HELLO AND WELCOME TO        NONAMENO       ^P9THIS LITTLE FUCKIN SCROLLTEXT";
+        myscrolltext.init(mycanvas, myfont, 1);
+
+        go();
+      }
+
+      function go() {
+        mycanvas.fill("#000000");
+        myscrolltext.draw(240 - 16);
+        requestAnimFrame(go);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <center>
+      <div id="main"></div>
+    </center>
+  </body>
+</html>

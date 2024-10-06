@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "esModuleInterop": true,
+    "lib": ["ES6", "DOM"],
+    "module": "CommonJS",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./dist",
+    "strict": true,
+    "target": "ES5",
+    "typeRoots": ["src/types/"],
+    "allowJs": true
+  },
+  "include": ["src/**/*.ts", "src/neoart.js"]
+}
