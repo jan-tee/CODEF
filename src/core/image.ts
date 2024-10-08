@@ -70,10 +70,10 @@ export class image {
     dst: canvas,
     x: number,
     y: number,
-    alpha: number,
-    rot: number,
-    w: number,
-    h: number
+    alpha: number = 1,
+    rot: number = 0,
+    w: number = 1,
+    h: number = 1
   ) {
     var tmp = dst.contex.globalAlpha;
     if (typeof alpha == "undefined") alpha = 1;

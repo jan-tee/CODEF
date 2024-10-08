@@ -3,35 +3,108 @@
   <head>
     <script src="dist/bundle.js"></script>
     <script>
-      var player = new CODEF.music("YM");
-      // player.stereo(true);
-      // player.LoadAndRun("tutorials/media/A Prehistoric Tale  7.ym");
-      var player = new CODEF.music("MOD")
-      player.LoadAndRun("media/trsi_technomania.mod");
+      var player = new music("YM");
+      player.stereo(true);
+      player.LoadAndRun("tutorials/media/A Prehistoric Tale  7.ym");
+      // var player = new music("MOD");
+      // player.LoadAndRun("media/trsi_technomania.mod");
 
-      var myfont = new CODEF.image("tutorials/media/font1.png");
-      var mycanvas;
       var myscrolltext;
+      var mycanvas;
 
       function init() {
-        mycanvas = new CODEF.canvas(640, 480, "main");
+        var myfont = new image("tutorials/media/font1.png");
+        mycanvas = new canvas(1000, 1000, "main");
+        // scroller
         myfont.initTile(32, 32, 32);
-        myscrolltext = new CODEF.scrolltext_horizontal();
+        myscrolltext = new scrolltext_horizontal();
         myscrolltext.scrtxt =
           "HELLO AND WELCOME TO        NONAMENO       ^P9THIS LITTLE FUCKIN SCROLLTEXT";
         myscrolltext.init(mycanvas, myfont, 1);
+
+        // starfield
+        mystarfield = new starfield3D(
+          mycanvas,
+          500,
+          2,
+          1000,
+          1000,
+          500,
+          500,
+          "#FFFFFF",
+          150,
+          0,
+          0
+        );
+
+        // mouse tracker
+        MyMouseTracker = new MouseTracker();
+        MyMouseTracker.addMouseTrack(mycanvas, false);
 
         go();
       }
 
       function go() {
         mycanvas.fill("#000000");
-        myscrolltext.draw(240 - 16);
+        myscrolltext.draw(500 - 16);
+        mystarfield.draw();
         requestAnimFrame(go);
+
+        // mouse
+        mouseX = mycanvas.MousePosX;
+        mouseY = mycanvas.MousePosY;
+
+        MyMouseTracker.MouseUpdate();
+
+        if (mycanvas.MouseButt & 1) {
+          mycanvas.contex.font = "20pt Calibri";
+          mycanvas.contex.fillStyle = "green";
+          mycanvas.contex.fillText(
+            "Button 1 is pressed down at  X:" + mouseX + "   Y:" + mouseY,
+            100,
+            130
+          );
+        }
+        if (mycanvas.MouseButt & 2) {
+          mycanvas.contex.font = "20pt Calibri";
+          mycanvas.contex.fillStyle = "blue";
+          mycanvas.contex.fillText(
+            "Button 2 is pressed down at  X:" + mouseX + "   Y:" + mouseY,
+            100,
+            160
+          );
+        }
+        if (mycanvas.MouseButt & 4) {
+          mycanvas.contex.font = "20pt Calibri";
+          mycanvas.contex.fillStyle = "orange";
+          mycanvas.contex.fillText(
+            "Mid Button is pressed down at  X:" + mouseX + "   Y:" + mouseY,
+            100,
+            190
+          );
+        }
+
+        if (mouseX > 0 && mouseX < 1000) {
+          mycanvas.contex.font = "20pt Calibri";
+          mycanvas.contex.fillStyle = "red";
+          mycanvas.contex.fillText(
+            "Mouse pos is    X:" + mouseX + "    Y:" + mouseY,
+            100,
+            100
+          );
+        }
       }
     </script>
+    <style type="text/css">
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-size: 11px;
+      }
+    </style>
   </head>
-  <body onload="init()">
+  <body onload="init();">
     <center>
       <div id="main"></div>
     </center>

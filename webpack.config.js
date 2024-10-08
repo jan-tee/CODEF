@@ -6,8 +6,8 @@ module.exports = {
   output: {
     filename: "bundle.js", // Output bundle file
     path: path.resolve(__dirname, "dist"), // Output directory
-    library: "CODEF",
-    libraryTarget: "window",
+    // library: "[name]",
+    // libraryTarget: "window",
   },
   resolve: {
     extensions: [".ts", ".js"], // Resolve both .ts and .js files

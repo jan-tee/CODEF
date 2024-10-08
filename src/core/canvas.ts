@@ -20,7 +20,7 @@
 	
 */
 export class canvas {
-  public canvas: HTMLCanvasElement & canvas;
+  public canvas: HTMLCanvasElement;
 
   public handlex = 0;
   public handley = 0;
@@ -29,6 +29,14 @@ export class canvas {
   public tileh = 0;
   public tilestart = 0;
   public contex: any;
+
+  static Mouse_UNTRACKED = -1000000;
+  public MousePosXTmp: number = canvas.Mouse_UNTRACKED;
+  public MousePosYTmp: number = canvas.Mouse_UNTRACKED;
+  public MouseButtTmp: number = 0;
+  public MousePosX: number = canvas.Mouse_UNTRACKED;
+  public MousePosY: number = canvas.Mouse_UNTRACKED;
+  public MouseButt: number = 0;
 
   constructor(
     public width: number,
@@ -358,10 +366,10 @@ export class canvas {
     party: number,
     partw: number,
     parth: number,
-    alpha: number,
-    rot: number,
-    zx: number,
-    zy: number
+    alpha: number = 1,
+    rot: number = 0,
+    zx: number = 1,
+    zy: number = 1
   ) {
     if (partx < 0) {
       x -= partx / (this.midhandled == true ? 2 : 1);

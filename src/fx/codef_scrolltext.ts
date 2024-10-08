@@ -25,8 +25,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ------------------------------------------------------------------------------*/
 
-import { canvas } from "./core/canvas";
-import { image } from "./core/image";
+import { canvas } from "../core/canvas";
+import { image } from "../core/image";
 
 export class ltrobj {
   constructor(public posx: number, public posy: number, public ltr: number) {}
